@@ -89,7 +89,7 @@ async def call_api(url, data, proxy, token):
         scraper = cloudscraper.create_scraper()
 
         response = scraper.post(url, json=data, headers=headers, proxies={
-                                "http": proxy, "https": proxy}, timeout=30)
+                                "http": proxy, "https": proxy}, timeout=30, verify=False)
 
         response.raise_for_status()
         return valid_resp(response.json())

@@ -1,4 +1,4 @@
-# Test script for bypass nodepay API's
+# Test script for bypass nodepay API's | Bypassed by IM-Hanzou
 import asyncio
 import aiohttp
 import time
@@ -7,7 +7,7 @@ import cloudscraper
 from loguru import logger
 
 def show_warning():
-    confirm = input("By using this tool means you understand the risks. do it at your own risk! \nPress Enter to continue or Ctrl+C to cancel... ")
+    confirm = input("THIS IS BYPASSED VERSION - BYPASSED BY IM-HANZOU (github/im-hanzou) \n\nBy using this tool means you understand the risks. do it at your own risk! \nPress Enter to continue or Ctrl+C to cancel... ")
 
     if confirm.strip() == "":
         print("Continuing...")

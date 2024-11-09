@@ -20,19 +20,19 @@ apt install python3 python3-pip -y
 ```
 - Install requirements: 
 ```bash
-python3 -m pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 ### Run the Bot
 - Replace the proxies example in ```proxies.txt``` to your own proxies, please use only 10 proxies with proxies http only.
 #### Run command
 - Run for original server:
 ```bash
-python3 run.py
+python run.py
 ```
 - Run for bypass server:
 >Use this script if you getting errors like ```Error during API call: 403 Client Error: Forbidden for url``` 
 ```bash
-python3 run-bypass.py
+python run-bypass.py
 ```
 - Press Enter then insert your nodepay token
 # Operating status

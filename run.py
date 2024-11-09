@@ -18,7 +18,7 @@ PING_INTERVAL = 60
 RETRIES = 60
 
 # Domain API OLD
-# https://nodewars.nodepay.ai / https://nw.nodepay.ai
+# https://nodewars.nodepay.ai / https://nw.nodepay.ai / https://nw2.nodepay.ai
 # https://api.nodepay.ai / 18.136.143.169
 # https://sandbox-api.nodepay.ai / 52.77.170.182
 DOMAIN_API = {

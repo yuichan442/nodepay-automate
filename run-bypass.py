@@ -1,4 +1,4 @@
-# Test script for bypass nodepay API's | Bypassed by IM-Hanzou
+# Test script for bypass nodepay API's | Bypassed by IM-Hanzou 
 import asyncio
 import aiohttp
 import time
@@ -19,9 +19,8 @@ PING_INTERVAL = 60
 RETRIES = 60
 
 # Domain API OLD
-# https://nodewars.nodepay.ai / https://nw.nodepay.ai / https://nw2.nodepay.ai / 54.255.192.166
-# https://api.nodepay.ai / 18.136.143.169
-# https://sandbox-api.nodepay.ai / 52.77.170.182
+# https://nodewars.nodepay.ai / https://nw.nodepay.ai | https://nw2.nodepay.ai | IP: 54.255.192.166
+# https://api.nodepay.ai | IP: 18.136.143.169, 52.77.170.182
 
 # OLD HOST
 #    "SESSION": "https://api.nodepay.org/api/auth/session",

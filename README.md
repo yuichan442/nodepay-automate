@@ -23,6 +23,8 @@ apt install python3 python3-pip -y
 python3 -m pip install -r requirements.txt
 ```
 ### Run the Bot
+- Replace the proxies example in ```proxies.txt``` to your own proxies, please use only 10 proxies with proxies http only.
+#### Run command
 - Run for original server:
 ```bash
 python3 run.py
@@ -43,4 +45,5 @@ If the following log appears, it means it is running successfully.
 ```
 # Notes
 - Run this bot, and it will update your referrer code to my invite code if you don't have one.
+- One account only can connect with 10 Proxies
 - You can just run this bot at your own risk, I'm not responsible for any loss or damage caused by this bot. This bot is for educational purposes only.

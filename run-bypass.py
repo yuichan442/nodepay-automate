@@ -29,7 +29,7 @@ RETRIES = 60
 
 # Testing | Found nodepay real ip address :P | Cloudflare host bypassed!
 DOMAIN_API = {
-    "SESSION": "https://18.136.143.169/api/auth/session",
+    "SESSION": "http://18.136.143.169/api/auth/session",
     "PING": "http://54.255.192.166/api/network/ping"
 }
 

@@ -20,7 +20,7 @@ RETRIES = 60
 
 # OLD Domain API
 # PING API: https://nodewars.nodepay.ai / https://nw.nodepay.ai | https://nw2.nodepay.ai | IP: 54.255.192.166
-# AUTH API: https://api.nodepay.ai | IP: 18.136.143.169, 52.77.170.182
+# SESSION API: https://api.nodepay.ai | IP: 18.136.143.169, 52.77.170.182
 
 # NEW HOST DOMAIN
 #    "SESSION": "https://api.nodepay.org/api/auth/session",

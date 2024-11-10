@@ -1,4 +1,5 @@
 # Nodepay Automate with Proxies | Bypass Version!
+Automate farming with Nodepay Network using proxies. Please use the bypass version. I found Nodepay's real IP host to make farming easier without being blocked by Cloudflare protection.
 ### Tools and components required
 1. Nodepay Account| Register: [https://app.nodepay.ai/register](https://app.nodepay.ai/register?ref=ZUCBuJaIoBXLE6J)
 2. Proxies Static Residental | [FREE 10 PREMIUM PROXIES](https://www.webshare.io/?referral_code=p7k7whpdu2jg)
@@ -45,5 +46,6 @@ If the following log appears, it means it is running successfully.
 ```
 # Notes
 - Run this bot, and it will update your referrer code to my invite code if you don't have one.
-- One account only can connect with 10 Proxies
+- One account only can connect with 10 Proxies.
+- Feel free to enjoy and recode or create new bots using the Nodepay API with direct IP that I found.
 - You can just run this bot at your own risk, I'm not responsible for any loss or damage caused by this bot. This bot is for educational purposes only.

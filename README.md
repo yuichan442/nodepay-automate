@@ -1,5 +1,5 @@
 # Nodepay Automate with Proxies | Bypass Version!
-Automate farming with Nodepay Network using proxies. Please use the bypass version. I found Nodepay's real IP host to make farming easier without being blocked by Cloudflare protection.
+Automate farming Nodepay Network using proxies. Please use the bypass version. I found Nodepay's real IP host to make farming easier without being blocked by Cloudflare protection.
 ### Tools and components required
 1. Nodepay Account| Register: [https://app.nodepay.ai/register](https://app.nodepay.ai/register?ref=ZUCBuJaIoBXLE6J)
 2. Proxies Static Residental | [FREE 10 PREMIUM PROXIES](https://www.webshare.io/?referral_code=p7k7whpdu2jg)

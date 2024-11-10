@@ -123,7 +123,7 @@ async def ping(proxy, token):
     current_time = time.time()
 
     if proxy in last_ping_time and (current_time - last_ping_time[proxy]) < PING_INTERVAL:
-        logger.info(f"Skipping ping for proxy { proxy}, not enough time elapsed")
+        logger.info(f"Skipping ping for proxy {proxy}, not enough time elapsed")
         return
 
     last_ping_time[proxy] = current_time

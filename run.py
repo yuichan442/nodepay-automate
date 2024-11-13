@@ -122,7 +122,8 @@ async def ping(proxy, token):
         data = {
             "id": account_info.get("uid"),
             "browser_id": browser_id,  
-            "timestamp": int(time.time())
+            "timestamp": int(time.time()),
+            "version":"2.2.7"
         }
 
         response = await call_api(DOMAIN_API["PING"], data, proxy, token)

@@ -3,6 +3,7 @@ import asyncio
 import aiohttp
 import time
 import uuid
+import random
 import cloudscraper
 from loguru import logger
 
@@ -27,13 +28,25 @@ RETRIES = 60
 #    "PING": "https://nw.nodepay.org/api/network/ping"
 
 # Testing | Found nodepay real ip address :P | Cloudflare host bypassed!
-DOMAIN_API = {
-    # http://18.136.143.169/api/auth/session / rolling back just for auth
-    "SESSION": "https://api.nodepay.ai/api/auth/session",
-    #"PING": "http://54.255.192.166/api/network/ping"
-    "PING": "http://52.77.10.116/api/network/ping"
-    #"PING": "http://13.215.134.222/api/network/ping"
+DOMAIN_API_ENDPOINTS = {
+    "SESSION": [
+        # http://18.136.143.169/api/auth/session / rolling back just for auth
+        "https://api.nodepay.ai/api/auth/session"
+    ],
+    "PING": [
+        #"PING": "http://54.255.192.166/api/network/ping"
+        "http://52.77.10.116/api/network/ping",
+        "http://13.215.134.222/api/network/ping"
+    ]
 }
+
+def get_random_endpoint(endpoint_type):
+    return random.choice(DOMAIN_API_ENDPOINTS[endpoint_type])
+
+def get_endpoint(endpoint_type):
+    if endpoint_type not in DOMAIN_API_ENDPOINTS:
+        raise ValueError(f"Unknown endpoint type: {endpoint_type}")
+    return get_random_endpoint(endpoint_type)
 
 CONNECTION_STATES = {
     "CONNECTED": 1,
@@ -63,7 +76,7 @@ async def render_profile_info(proxy, token):
         if not np_session_info:
             # Generate new browser_id
             browser_id = uuidv4()
-            response = await call_api(DOMAIN_API["SESSION"], {}, proxy, token)
+            response = await call_api(get_endpoint("SESSION"), {}, proxy, token)
             valid_resp(response)
             account_info = response["data"]
             if account_info.get("uid"):
@@ -139,7 +152,7 @@ async def ping(proxy, token):
             "version":"2.2.7"
         }
 
-        response = await call_api(DOMAIN_API["PING"], data, proxy, token)
+        response = await call_api(get_endpoint("PING"), data, proxy, token)
         if response["code"] == 0:
             logger.info(f"Ping successful via proxy {proxy}: {response}")
             RETRIES = 0

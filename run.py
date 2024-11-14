@@ -6,7 +6,7 @@ import cloudscraper
 from loguru import logger
 
 def show_warning():
-    confirm = input("By using this tool means you understand the risks. do it at your own risk! \nPress Enter to continue or Ctrl+C to cancel... ")
+    confirm = input("Nodepay Autofarmer by IM-Hanzou: github.com/im-hanzou\n\nBy using this tool means you understand the risks. do it at your own risk! \nPress Enter to continue or Ctrl+C to cancel... ")
 
     if confirm.strip() == "":
         print("Continuing...")

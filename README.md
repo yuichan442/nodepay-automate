@@ -19,9 +19,9 @@ Automate farming Nodepay Network using proxies. Please use the bypass version. I
 ```bash
 apt install python3 python3-pip -y
 ```
-- Install requirements: 
+- Installing requirements: 
 ```bash
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
 ### Run the Bot
 - Replace the proxies example in ```proxies.txt``` to your own proxies, please use only 10 proxies with proxies http only.

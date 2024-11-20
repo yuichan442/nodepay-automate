@@ -90,30 +90,29 @@ def divide_proxies(proxies, num_tokens):
     shuffled_proxies = proxies.copy()
     random.shuffle(shuffled_proxies)
     
-    proxies_per_token = min(len(shuffled_proxies) // num_tokens, 10)
-    if proxies_per_token == 0:
-        proxies_per_token = 1
+    divided_proxies = [[] for _ in range(num_tokens)]
     
-    divided_proxies = []
-    start = 0
-    remaining_proxies = len(shuffled_proxies)
+    proxy_index = 0
+    for token_index in range(num_tokens):
+        if proxy_index < len(shuffled_proxies):
+            divided_proxies[token_index].append(shuffled_proxies[proxy_index])
+            proxy_index += 1
     
-    for i in range(num_tokens):
-        if remaining_proxies > 0:
-            if i == num_tokens - 1:
-                proxy_count = min(remaining_proxies, 10)
+    while proxy_index < len(shuffled_proxies):
+        for token_index in range(num_tokens):
+            if len(divided_proxies[token_index]) >= 10:
+                continue
+                
+            if proxy_index < len(shuffled_proxies):
+                divided_proxies[token_index].append(shuffled_proxies[proxy_index])
+                proxy_index += 1
             else:
-                proxy_count = min(proxies_per_token, remaining_proxies, 10)
-            
-            token_proxies = shuffled_proxies[start:start + proxy_count]
-            if token_proxies: 
-                divided_proxies.append(token_proxies)
-            
-            start += proxy_count
-            remaining_proxies -= proxy_count
+                break
     
     for i, proxy_group in enumerate(divided_proxies):
-        logger.info(f"Token {i+1} got {len(proxy_group)} proxy")
+        logger.info(f"Token {i+1} received {len(proxy_group)} proxies")
+        
+    divided_proxies = [group for group in divided_proxies if group]
     
     return divided_proxies
 
@@ -248,14 +247,13 @@ async def main():
     
     proxy_groups = divide_proxies(all_proxies, len(tokens))
     
-    logger.info("=== Proxy Allocation ===")
     for i, (token, proxy_group) in enumerate(zip(tokens, proxy_groups)):
         logger.info(f"Token {token[:8]}... got {len(proxy_group)} proxies")
     
     token_tasks = []
     for token, proxy_group in zip(tokens, proxy_groups):
         if proxy_group:
-            logger.info(f"Starting handler for token {token[:8]}... with {len(proxy_group)} proxies")
+            logger.info(f"Starting bot for token {token[:8]}... with {len(proxy_group)} proxies")
             task = asyncio.create_task(handle_token(token, proxy_group))
             token_tasks.append(task)
 

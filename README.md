@@ -30,16 +30,17 @@ python -m pip install -r requirements.txt
 ```bash
 python run.py
 ```
+>Press Enter then insert your nodepay token
 - Run for bypass server:
->Use this script if you getting errors like ```Error during API call: 403 Client Error: Forbidden for url``` 
+>Use this script if you getting errors like ```Error during API call: 403 Client Error: Forbidden for url```
 ```bash
 python run-bypass.py
 ```
+>Press Enter then insert your nodepay token
 - Run for multi bypassed server:
 ```bash
 python run-multi-bypass.py
 ```
-- Press Enter then insert your nodepay token
 # Operating status
 If the following log appears, it means it is running successfully.
 ```bash

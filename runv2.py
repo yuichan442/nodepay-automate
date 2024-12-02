@@ -56,6 +56,28 @@ def valid_resp(resp):
     if not resp or "code" not in resp or resp["code"] < 0:
         raise ValueError("Invalid response")
     return resp
+
+def parse_proxy(proxy_str):
+    if '://' not in proxy_str:
+        proxy_str = f'http://{proxy_str}'
+    
+    try:
+        from urllib.parse import urlparse
+        parsed = urlparse(proxy_str)
+        
+        proxy_dict = {
+            'http': proxy_str,
+            'https': proxy_str
+        }
+        
+        if parsed.scheme in ['socks4', 'socks5']:
+            proxy_dict['http'] = proxy_str
+            proxy_dict['https'] = proxy_str
+        
+        return proxy_dict
+    except Exception as e:
+        log("ERROR", f"Invalid proxy format: {proxy_str}. Error: {e}", Fore.LIGHTRED_EX)
+        return None
     
 async def render_profile_info(proxy, token):
     global proxy_browser_ids
@@ -93,6 +115,10 @@ async def render_profile_info(proxy, token):
             return proxy
 
 async def call_api(url, data, proxy, token):
+    parsed_proxies = parse_proxy(proxy)
+    if not parsed_proxies:
+        raise ValueError(f"Invalid proxy: {proxy}")
+
     headers = {
         "Authorization": f"Bearer {token}",
         "Content-Type": "application/json",
@@ -107,7 +133,7 @@ async def call_api(url, data, proxy, token):
             url, 
             json=data, 
             headers=headers, 
-            proxies={"http": proxy, "https": proxy},
+            proxies=parsed_proxies,
             timeout=30,
             impersonate="chrome110"
         )
@@ -128,10 +154,14 @@ async def start_ping(proxy, token, account_info):
         log("ERROR", f"Error in start_ping for proxy {proxy}: {e}", Fore.LIGHTRED_EX)
         
 async def get_real_ip(proxy):
+    parsed_proxies = parse_proxy(proxy)
+    if not parsed_proxies:
+        return "N/A"
+    
     try:
         response = requests.get(
             "https://api64.ipify.org/", 
-            proxies={"http": proxy, "https": proxy},
+            proxies=parsed_proxies,
             timeout=10
         )
         return response.text.strip()
@@ -188,7 +218,7 @@ def load_proxies(proxy_file):
     try:
         with open(proxy_file, 'r') as file:
             proxies = file.read().splitlines()
-        return proxies
+        return [p for p in proxies if p.strip()]
     except Exception as e:
         log("ERROR", f"Failed to load proxies: {e}", Fore.LIGHTRED_EX)
         raise SystemExit("Exiting due to failure in loading proxies")
@@ -203,24 +233,102 @@ def load_session_info(proxy):
     return {}  
 
 def is_valid_proxy(proxy):
-    return True  
+    return parse_proxy(proxy) is not None
 
 def remove_proxy_from_list(proxy):
     pass  
 
+async def multi_account_mode(all_tokens, all_proxies):
+    valid_proxies = [proxy for proxy in all_proxies if is_valid_proxy(proxy)]
+    
+    token_tasks = []
+    
+    for index, token in enumerate(all_tokens, 1):
+        start_proxy = ((index - 1) * 3)
+        end_proxy = start_proxy + 3
+        token_proxies = valid_proxies[start_proxy:end_proxy]
+        
+        if not token_proxies:
+            log("WARNING", f"No proxies available for Token {index}", Fore.LIGHTYELLOW_EX)
+            continue
+        
+        log("INFO", f"Token {index} with Proxies: {token_proxies}", Fore.LIGHTBLUE_EX)
+        
+        task = asyncio.create_task(process_token(token, token_proxies))
+        token_tasks.append(task)
+    
+    if token_tasks:
+        await asyncio.gather(*token_tasks)
+
+async def process_token(token, proxies):
+    tasks = {asyncio.create_task(render_profile_info(
+        proxy, token)): proxy for proxy in proxies}
+
+    while tasks:
+        done, pending = await asyncio.wait(tasks.keys(), return_when=asyncio.FIRST_COMPLETED)
+        for task in done:
+            failed_proxy = tasks[task]
+            if task.result() is None:
+                log("INFO", f"Removing and replacing failed proxy for token {token[:10]}...: {failed_proxy}", Fore.LIGHTYELLOW_EX)
+                proxies.remove(failed_proxy)
+            tasks.pop(task)
+
+        for proxy in set(proxies) - set(tasks.values()):
+            new_task = asyncio.create_task(
+                render_profile_info(proxy, token))
+            tasks[new_task] = proxy
+        
+        if not tasks:
+            break
+        
+        await asyncio.sleep(3)
+    
+    await asyncio.sleep(10)
+
 async def main():
-    all_proxies = load_proxies('proxies.txt')  
-    token = input(Fore.LIGHTYELLOW_EX + "Nodepay Token: ").strip()
-    if not token:
-        log("ERROR", "Token cannot be empty. Exiting the program.", Fore.LIGHTRED_EX)
+    print(Fore.LIGHTYELLOW_EX + "Alright, we here! Select Mode:")
+    print("1. Single Account Mode")
+    print("2. Multi-Account Mode")
+    
+    mode_choice = input(Fore.LIGHTYELLOW_EX + "Insert your choice (1/2): ").strip()
+    
+    all_proxies = load_proxies('proxies.txt')
+    
+    if mode_choice == '1':
+        print(Fore.LIGHTYELLOW_EX + "Alright, we here! Insert your nodepay token that you got from the tutorial.\n")
+        token = input(Fore.LIGHTYELLOW_EX + "Nodepay Token: ").strip()
+        if not token:
+            log("ERROR", "Token cannot be empty. Exiting the program.", Fore.LIGHTRED_EX)
+            exit()
+        
+        await single_account_mode(token, all_proxies)
+    
+    elif mode_choice == '2':
+        try:
+            with open('tokens.txt', 'r') as file:
+                all_tokens = [line.strip() for line in file if line.strip()]
+            
+            if not all_tokens:
+                log("ERROR", "No tokens found in tokens.txt", Fore.LIGHTRED_EX)
+                exit()
+            
+            await multi_account_mode(all_tokens, all_proxies)
+        
+        except FileNotFoundError:
+            log("ERROR", "tokens.txt not found. Please create the file with tokens.", Fore.LIGHTRED_EX)
+            exit()
+    
+    else:
+        log("ERROR", "Invalid choice. Please select 1 or 2.", Fore.LIGHTRED_EX)
         exit()
 
-    while True:
-        active_proxies = [
-            proxy for proxy in all_proxies if is_valid_proxy(proxy)][:100]
-        tasks = {asyncio.create_task(render_profile_info(
-            proxy, token)): proxy for proxy in active_proxies}
+async def single_account_mode(token, all_proxies):
+    active_proxies = [
+        proxy for proxy in all_proxies if is_valid_proxy(proxy)][:3]
+    tasks = {asyncio.create_task(render_profile_info(
+        proxy, token)): proxy for proxy in active_proxies}
 
+    while tasks:
         done, pending = await asyncio.wait(tasks.keys(), return_when=asyncio.FIRST_COMPLETED)
         for task in done:
             failed_proxy = tasks[task]
@@ -241,11 +349,10 @@ async def main():
                 render_profile_info(proxy, token))
             tasks[new_task] = proxy
         await asyncio.sleep(3)
-    await asyncio.sleep(10)  
+    await asyncio.sleep(10)
 
 if __name__ == '__main__':
     show_warning()
-    print(Fore.LIGHTYELLOW_EX + "Alright, we here! Insert your nodepay token that you got from the tutorial.\n")
     try:
         asyncio.run(main())
     except (KeyboardInterrupt, SystemExit):

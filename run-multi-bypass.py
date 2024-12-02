@@ -1,3 +1,4 @@
+# Not working anymore, please use runv2.py
 import asyncio
 import aiohttp
 import time

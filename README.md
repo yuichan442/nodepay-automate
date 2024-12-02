@@ -1,7 +1,8 @@
 # Nodepay Automate with Proxies | Bypass Version!
-Automate farming Nodepay Network using proxies. Please use the bypass version. I found Nodepay's real IP host to make farming easier without being blocked by Cloudflare protection. 
-- This bot support multiple accounts. Run ```run-multi-bypass.py```
-- Place multiple tokens in ```tokens.txt```
+## Information: Old version is not working anymore, Please use ``runv2.py`` instead! Multi accounts feature for v2 script is coming soon!
+Automate farming Nodepay Network using proxies. ~Please use the bypass version. I found Nodepay's real IP host to make farming easier without being blocked by Cloudflare protection.~ Old version is not working anymore, Please use ``runv2.py`` instead!
+- ~This bot support multiple accounts. Run ```run-multi-bypass.py```~
+- ~Place multiple tokens in ```tokens.txt```~
 ### Tools and components required
 1. Nodepay Account | Register: [https://app.nodepay.ai/register](https://app.nodepay.ai/register?ref=ZUCBuJaIoBXLE6J)
 2. Proxies Static Residental | [FREE 10 PREMIUM PROXIES](https://www.webshare.io/?referral_code=p7k7whpdu2jg) | Good Premium Proxies (paid): [922proxy](https://www.922proxy.com/register?inviter_code=d03d4fed), [proxy-cheap](https://app.proxy-cheap.com/r/JysUiH), [infatica](https://dashboard.infatica.io/aff.php?aff=544)
@@ -33,28 +34,30 @@ python -m pip install -r requirements.txt
 python runv2.py
 ```
 >Press Enter then insert your nodepay token
-- Run for original server:
+- ~Run for original server~:
 ```bash
 python run.py
 ```
->Press Enter then insert your nodepay token
-- Run for bypass server:
->Use this script if you getting errors like ```Error during API call: 403 Client Error: Forbidden for url```
+>~Press Enter then insert your nodepay token~ Not working anymore, please use ``runv2.py``
+- ~Run for bypass server~:
+>~Use this script if you getting errors like ```Error during API call: 403 Client Error: Forbidden for url```~. Not working anymore, please use ``runv2.py``
 ```bash
 python run-bypass.py
 ```
->Press Enter then insert your nodepay token
-- Run for multi bypassed server:
+>~Press Enter then insert your nodepay token~ Not working anymore, please use ``runv2.py``
+- ~Run for multi bypassed server~:
 ```bash
 python run-multi-bypass.py
 ```
+>Not working anymore, please use ``runv2.py``
 # Operating status
 If the following log appears, it means it is running successfully.
 ```bash
-2024-07-30 04:37:18.263 | INFO     | __main__:ping:110 - Ping successful: {'success': True, 'code': 0, 'msg': 'Success', 'data': {'ip_score': 88}}
-2024-07-30 04:37:48.621 | INFO     | __main__:ping:110 - Ping successful: {'success': True, 'code': 0, 'msg': 'Success', 'data': {'ip_score': 90}}
-2024-07-30 04:38:18.968 | INFO     | __main__:ping:110 - Ping successful: {'success': True, 'code': 0, 'msg': 'Success', 'data': {'ip_score': 94}}
-2024-07-30 04:38:59.338 | INFO     | __main__:ping:110 - Ping successful: {'success': True, 'code': 0, 'msg': 'Success', 'data': {'ip_score': 98}}
+[2024-12-02 14:54:54] [INFO] Account: user@email.com | Browser ID: xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx | IP: 127.0.0.1 | IP Score: 99
+[2024-12-02 14:54:58] [INFO] Account: user@email.com | Browser ID: xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx | IP: 127.0.0.1 | IP Score: 86
+[2024-12-02 14:54:59] [INFO] Account: user@email.com | Browser ID: xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx | IP: 127.0.0.1 | IP Score: 92
+[2024-12-02 14:55:02] [INFO] Account: user@email.com | Browser ID: xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx | IP: 127.0.0.1 | IP Score: 81
+[2024-12-02 14:55:11] [INFO] Account: user@email.com | Browser ID: xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx | IP: 127.0.0.1 | IP Score: 82
 ```
 # Notes
 - Run this bot, and it will update your referrer code to my invite code if you don't have one.

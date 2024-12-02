@@ -1,5 +1,5 @@
 # Nodepay Automate with Proxies | Bypass Version!
-## Information: Old version is not working anymore, Please use ``runv2.py`` instead! Multi accounts feature for v2 script is coming soon!
+## Information: Old version is not working anymore, Please use ``runv2.py`` instead! 
 Automate farming Nodepay Network using proxies. ~Please use the bypass version. I found Nodepay's real IP host to make farming easier without being blocked by Cloudflare protection.~ 
 
 Old version is not working anymore, Please use ``runv2.py`` instead!

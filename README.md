@@ -28,6 +28,11 @@ python -m pip install -r requirements.txt
 ### Run the Bot
 - Replace the proxies example in ```proxies.txt``` to your own proxies, please use only 10 proxies with proxies http only.
 #### Run command
+- Run for original server - version 2:
+```bash
+python runv2.py
+```
+>Press Enter then insert your nodepay token
 - Run for original server:
 ```bash
 python run.py

@@ -20,10 +20,10 @@ Old version is not working anymore, Please use ``runv2.py`` instead!
 3. [Infatica](https://dashboard.infatica.io/aff.php?aff=544)
 # Setup Tutorial
 - Open [Nodepay](https://app.nodepay.ai/register?ref=ZUCBuJaIoBXLE6J) and login to dashboard
-- Important! Make sure you installed Nodepay Extension in your Browser and must be Connected after getting token!, Download Extension: [Nodepay Extension](https://chromewebstore.google.com/detail/nodepay-extension/lgmpfmgeabnnlemejacfljbmonaomfmm)
 - Press F12 or CTRL + SHIFT + I
 - Select Console
 - At the console, type ```allow pasting``` and press enter
+<!-- - Important! Make sure you installed Nodepay Extension in your Browser and must be Connected after getting token!, Download Extension: [Nodepay Extension](https://chromewebstore.google.com/detail/nodepay-extension/lgmpfmgeabnnlemejacfljbmonaomfmm) -->
 ![0001](https://github.com/im-hanzou/getgrass_bot/blob/main/pasting.JPG)
 - Then type ``localStorage.getItem('np_token')`` and press enter
 ![0002](https://github.com/im-hanzou/getgrass_bot/blob/main/nodepaytoken.png)

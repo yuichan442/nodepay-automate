@@ -3,8 +3,8 @@ Automate farming Nodepay Network using proxies. Important! Please read the Infor
 - Old version is not working anymore, Please use ``runv2.py`` instead! For Windows users please use [WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
 - Latest curl_cffi modules (for impersonate chrome131 version) ``curl_cffi==0.8.0b7`` isn't updated from Windows Python Library server. I already tried impersonate chrome110 version and others but still getting error, stable impersonate is chrome131 version.
  <!-- ~Please use the bypass version. I found Nodepay's real IP host to make farming easier without being blocked by Cloudflare protection.~ -->
-- This bot only support for Linux and [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) Windows for now, i don't know about Termux or etc.
-- This bot support multiple accounts. Place multiple tokens in ```tokens.txt```
+- This bot only support for Linux and [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) Windows for now, for Termux use [tutorial](https://github.com/im-hanzou/nodepay-automate?tab=readme-ov-file#termux) below.
+- This bot support multiple accounts. Support socks and http proxies. Using 3 proxies for each accounts.
 ## Tools and components required
 1. Nodepay Account | Register: [https://app.nodepay.ai/register](https://app.nodepay.ai/register?ref=ZUCBuJaIoBXLE6J)
 2. VPS (OPTIONAL) and Python3
@@ -43,7 +43,7 @@ python -m pip install -r requirements.txt
 - How to install WSL: [Youtube Tutorial](https://www.youtube.com/watch?v=HrAsmXy1-78&ab_channel=LogicLambda).
 - Next, follow the Linux component installation steps below within the [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) terminal.
 ### LINUX
-- For Linux, install Python3:
+- For Linux, install Python3 and Git:
 ```bash
 apt update; apt upgrade -y; apt install git python3 python3-pip -y
 ```
@@ -55,8 +55,26 @@ git clone https://github.com/im-hanzou/nodepay-automate
 ```bash
 python3 -m pip install -r requirements.txt
 ```
+### TERMUX
+- For Termux Android [Download Here](https://f-droid.org/repo/com.termux_1020.apk) [F-Droid Version] and Allow Permission Storage On Setting Termux
+- Install Python3 and Git:
+```bash
+pkg update; pkg upgrade -y; pkg install git python3 python3-pip -y
+```
+- Download this script using Git:
+```bash
+git clone https://github.com/im-hanzou/nodepay-automate
+```
+- Installing requirements, make sure you are in this script directory: 
+```bash
+python3 -m pip install -r requirements.txt
+```
+- Copy ``libcurl-impersonate-chrome.so.4`` to ``/data/data/com.termux/files/usr/lib``
+```bash
+cp libcurl-impersonate-chrome.so.4 /data/data/com.termux/files/usr/lib
+```
 # Run the Bot
-- Replace the proxies example in ```proxies.txt``` to your own proxies, please use only 3 proxies with proxies http only. If you run multiple accounts make sure you have 3 proxies for each accounts.
+- Replace the proxies example in ```proxies.txt``` to your own proxies, please use only 3 proxies with proxies. If you run multiple accounts make sure you have 3 proxies for each accounts.
 - For multi accounts, insert your tokens perlines in file ``tokens.txt``
 <!-- ## Run command Windows
 - Run for original server - version 2:

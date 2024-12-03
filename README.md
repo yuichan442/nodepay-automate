@@ -1,5 +1,5 @@
 # Nodepay Automate with Proxies 
-Automate farming Nodepay Network using proxies. Please read the Information below:
+Automate farming Nodepay Network using proxies. Important! Please read the Information below:
 - Old version is not working anymore, Please use ``runv2.py`` instead! For Windows users please use [WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
 - Latest curl_cffi modules (for impersonate chrome131 version) ``curl_cffi==0.8.0b7`` isn't updated from Windows Python Library server. I already tried impersonate chrome110 version and others but still getting error, stable impersonate is chrome131 version.
  <!-- ~Please use the bypass version. I found Nodepay's real IP host to make farming easier without being blocked by Cloudflare protection.~ -->
@@ -20,10 +20,9 @@ Automate farming Nodepay Network using proxies. Please read the Information belo
 3. [Infatica](https://dashboard.infatica.io/aff.php?aff=544)
 # Setup Tutorial
 - Open [Nodepay](https://app.nodepay.ai/register?ref=ZUCBuJaIoBXLE6J) and login to dashboard
-- Important! Make sure you installed Nodepay Extension in your Browser and must be Connected after getting token!, Download Extension: [Nodepay Extension](https://chromewebstore.google.com/detail/nodepay-extension/lgmpfmgeabnnlemejacfljbmonaomfmm)
 - Press F12 or CTRL + SHIFT + I
-- Select Console
-- At the console, type ```allow pasting``` and press enter
+- Select CONSOLE and type ```allow pasting``` and press enter
+<!-- - Important! Make sure you installed Nodepay Extension in your Browser and must be Connected after getting token!, Download Extension: [Nodepay Extension](https://chromewebstore.google.com/detail/nodepay-extension/lgmpfmgeabnnlemejacfljbmonaomfmm) -->
 ![0001](https://github.com/im-hanzou/getgrass_bot/blob/main/pasting.JPG)
 - Then type ``localStorage.getItem('np_token')`` and press enter
 ![0002](https://github.com/im-hanzou/getgrass_bot/blob/main/nodepaytoken.png)

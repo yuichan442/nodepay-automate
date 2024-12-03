@@ -65,13 +65,14 @@ pkg update; pkg upgrade -y; pkg install git python python-pip -y
 ```bash
 git clone https://github.com/im-hanzou/nodepay-automate
 ```
-- Installing requirements, make sure you are in this script directory: 
-```bash
-python -m pip install -r requirements.txt
-```
+- Make sure you are in this script directory: ``cd nodepay-automate``
 - Copy ``libcurl-impersonate-chrome.so.4`` to ``/data/data/com.termux/files/usr/lib``
 ```bash
 cp libcurl-impersonate-chrome.so.4 /data/data/com.termux/files/usr/lib
+```
+- Installing requirements: 
+```bash
+python -m pip install -r requirements.txt
 ```
 # Run the Bot
 - Replace the proxies example in ```proxies.txt``` to your own proxies, please use only 3 proxies with proxies. If you run multiple accounts make sure you have 3 proxies for each accounts.

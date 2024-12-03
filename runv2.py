@@ -37,7 +37,7 @@ PING_INTERVAL = 60
 RETRIES = 60
 
 DOMAIN_API = {
-    "SESSION": "https://api.nodepay.org/api/auth/session",
+    "SESSION": "http://api.nodepay.ai/api/auth/session",
     "PING": "https://nw.nodepay.org/api/network/ping"
 }
 

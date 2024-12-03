@@ -1,8 +1,8 @@
 # Nodepay Automate with Proxies | Bypass Version!
-## Information: Old version is not working anymore, Please use ``runv2.py`` instead! For Windows users please use [WSL](https://learn.microsoft.com/en-us/windows/wsl/install).
+## Information: Old version is not working anymore, Please use ``runv2.py`` instead!
 Automate farming Nodepay Network using proxies. ~Please use the bypass version. I found Nodepay's real IP host to make farming easier without being blocked by Cloudflare protection.~ 
 
-Old version is not working anymore, Please use ``runv2.py`` instead! For Windows users please use [WSL](https://learn.microsoft.com/en-us/windows/wsl/install).
+Old version is not working anymore, Please use ``runv2.py`` instead!
 - This bot support multiple accounts.
 - Place multiple tokens in ```tokens.txt```
 ## Tools and components required
@@ -20,6 +20,7 @@ Old version is not working anymore, Please use ``runv2.py`` instead! For Windows
 3. [Infatica](https://dashboard.infatica.io/aff.php?aff=544)
 # Setup Tutorial
 - Open [Nodepay](https://app.nodepay.ai/register?ref=ZUCBuJaIoBXLE6J) and login to dashboard
+- Important! Make sure you installed Nodepay Extension and must be Connected, download extension: [Nodepay Extension](https://chromewebstore.google.com/detail/nodepay-extension/lgmpfmgeabnnlemejacfljbmonaomfmm)
 - Press F12 or CTRL + SHIFT + I
 - Select Console
 - At the console, type ```allow pasting``` and press enter
@@ -28,20 +29,47 @@ Old version is not working anymore, Please use ``runv2.py`` instead! For Windows
 ![0002](https://github.com/im-hanzou/getgrass_bot/blob/main/nodepaytoken.png)
 - The text that appears is your nodepay token and copy the text
 # Component installation
-- ~Install Python For Windows: [Python](https://www.python.org/ftp/python/3.13.0/python-3.13.0-amd64.exe)~
-- For Windows, now you need to install [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) to run Linux inside Windows, cause latest curl_cffi modules isn't updated from windows python library server. How to install WSL: [Youtube Tutorial](https://www.youtube.com/watch?v=HrAsmXy1-78&ab_channel=LogicLambda). Then run Unix/Linux installation step.
-- For Linux:
+### WINDOWS
+- Install Python For Windows: [Python](https://www.python.org/ftp/python/3.13.0/python-3.13.0-amd64.exe)
+- Download this script Manually: [Nodepay Automate](https://github.com/im-hanzou/nodepay-automate/archive/refs/heads/main.zip)
+- If you want to use Git, Please download Git first: [Git Windows](https://github.com/git-for-windows/git/releases/download/v2.47.1.windows.1/Git-2.47.1-64-bit.exe), Then run in cmd:
 ```bash
-apt update; apt upgrade -y; apt install python3 python3-pip -y
+git clone https://github.com/im-hanzou/nodepay-automate
 ```
-- Installing requirements: 
+- Installing requirements, make sure you are in this script directory:
+```bash
+python -m pip install -r requirements.txt
+```
+<!-- For Windows, now you need to install [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) to run Linux inside Windows, cause latest curl_cffi modules isn't updated from windows python library server. How to install WSL: [Youtube Tutorial](https://www.youtube.com/watch?v=HrAsmXy1-78&ab_channel=LogicLambda). Then run Unix/Linux installation step. -->
+### LINUX
+- For Linux, install Python3:
+```bash
+apt update; apt upgrade -y; apt install git python3 python3-pip -y
+```
+- Download this script using Git:
+```bash
+git clone https://github.com/im-hanzou/nodepay-automate
+```
+- Installing requirements, make sure you are in this script directory: 
 ```bash
 python3 -m pip install -r requirements.txt
 ```
 # Run the Bot
 - Replace the proxies example in ```proxies.txt``` to your own proxies, please use only 3 proxies with proxies http only. If you run multiple accounts make sure you have 3 proxies for each accounts.
 - For multi accounts, insert your tokens perlines in file ``tokens.txt``
-## Run command
+## Run command Windows
+- Run for original server - version 2:
+```bash
+python runv2.py
+```
+>Press Enter, Select 1 then insert your nodepay token
+- Run for original server - version 2 - multi accounts:
+>Make sure you have tokens in ``tokens.txt`` before
+```bash
+python runv2.py
+```
+>Press Enter then Select 2
+## Run command Linux
 - Run for original server - version 2:
 ```bash
 python3 runv2.py
@@ -81,5 +109,6 @@ If the following log appears, it means it is running successfully.
 # Notes
 - Run this bot, and it will update your referral code to my invite code if you don't have one.
 - One account only can connect with 3 Proxies. If you run multiple accounts make sure you have 3 proxies for each accounts.
-<!-- - Feel free to enjoy and recode or create new bots using the Nodepay API with direct IP that I found. -->
 - You can just run this bot at your own risk, I'm not responsible for any loss or damage caused by this bot. This bot is for educational purposes only.
+<!-- - Feel free to enjoy and recode or create new bots using the Nodepay API with direct IP that I found. -->
+

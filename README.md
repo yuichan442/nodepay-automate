@@ -67,7 +67,7 @@ git clone https://github.com/im-hanzou/nodepay-automate
 ```
 - Installing requirements, make sure you are in this script directory: 
 ```bash
-python3 -m pip install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
 - Copy ``libcurl-impersonate-chrome.so.4`` to ``/data/data/com.termux/files/usr/lib``
 ```bash

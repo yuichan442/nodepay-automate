@@ -59,7 +59,7 @@ python3 -m pip install -r requirements.txt
 - For Termux Android [Download Here](https://f-droid.org/repo/com.termux_1020.apk) [F-Droid Version] and Allow Permission Storage On Setting Termux
 - Install Python3 and Git:
 ```bash
-pkg update; pkg upgrade -y; pkg install git python3 python3-pip -y
+pkg update; pkg upgrade -y; pkg install git python python-pip -y
 ```
 - Download this script using Git:
 ```bash

@@ -109,6 +109,7 @@ If the following log appears, it means it is running successfully.
 # Notes
 - Run this bot, and it will update your referral code to my invite code if you don't have one.
 - One account only can connect with 3 Proxies. If you run multiple accounts make sure you have 3 proxies for each accounts.
+- If you run the script and still got error, please use paid proxies cause every free proxies not all supported.
 - You can just run this bot at your own risk, I'm not responsible for any loss or damage caused by this bot. This bot is for educational purposes only.
 <!-- - Feel free to enjoy and recode or create new bots using the Nodepay API with direct IP that I found. -->
 
